@@ -32,9 +32,7 @@ def canUnlockAll(boxes):
         if idx != 0:
             index_keys[idx] = searchkey(boxes, idx)
 
-    i = 0
     for key, values in index_keys.items():
         if key not in values:
             return False
-        i += 1
     return True
