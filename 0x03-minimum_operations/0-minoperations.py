@@ -22,7 +22,7 @@ def minOperations(n):
     i = 2
     while (i <= n):
         while (n % i == 0):
-            operations += 1
+            operations += i
             n /= i
         i += 1
     return operations
