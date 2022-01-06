@@ -27,7 +27,7 @@ def canUnlockAll(boxes):
     Return:
         True if all boxes can be openen, False otherwise.
     """
-    index_keys = {}
+    index_keys = {0: [0]}
 
     for idx in range(len(boxes)):
         if idx != 0:
