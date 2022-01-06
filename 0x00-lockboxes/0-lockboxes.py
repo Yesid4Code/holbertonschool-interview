@@ -5,6 +5,7 @@ This file contain a function to check if boxes can be opened.
 
 
 def searchkey(boxes, idx):
+    """keys that could open the box"""
     i = 0
     keys = []
     for box in boxes:
