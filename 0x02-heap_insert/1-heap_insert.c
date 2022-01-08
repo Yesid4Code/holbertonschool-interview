@@ -6,10 +6,10 @@
  */
 void pop(queue_t **h_queue)
 {
-        queue_t *temp = *h_queue;
+	queue_t *temp = *h_queue;
 
-        *h_queue = (*h_queue)->next;
-        free(temp);
+	*h_queue = (*h_queue)->next;
+	free(temp);
 }
 
 /**
@@ -20,25 +20,25 @@ void pop(queue_t **h_queue)
  */
 queue_t *insert(queue_t **h_queue, heap_t *node)
 {
-        queue_t *new;
-        queue_t *curr;
+	queue_t *new;
+	queue_t *curr;
 
-        new = malloc(sizeof(*new));
-        if (!new)
-                return (NULL);
-        new->node = node;
-        new->next = NULL;
-        curr = *h_queue;
+	new = malloc(sizeof(*new));
+	if (!new)
+		return (NULL);
+	new->node = node;
+	new->next = NULL;
+	curr = *h_queue;
 
-        if (!*h_queue)
-        {
-                *h_queue = new;
-                return (new);
-        }
-        while (curr->next)
-                curr = curr->next;
-        curr->next = new;
-        return (new);
+	if (!*h_queue)
+	{
+		*h_queue = new;
+		return (new);
+	}
+	while (curr->next)
+		curr = curr->next;
+	curr->next = new;
+	return (new);
 }
 
 /**
@@ -50,42 +50,42 @@ queue_t *insert(queue_t **h_queue, heap_t *node)
  */
 heap_t *traversal(heap_t **root, int value)
 {
-        queue_t *h_queue = NULL;
-        heap_t *curr;
-        heap_t *new = NULL;
+	queue_t *h_queue = NULL;
+	heap_t *curr;
+	heap_t *new = NULL;
 
-        if (!insert(&h_queue, *root))
-                return (NULL);
-        while (h_queue)
-        {
-                curr = h_queue->node;
-                if (curr->left)
-                {
-                        if (!insert(&h_queue, curr->left))
-                                return (NULL);
-                }
-                else if (!new)
-                {
-                        new = binary_tree_node(curr, value);
-                        curr->left = new;
-                        if (!new)
-                                return (NULL);
-                }
-                if (curr->right)
-                {
-                        if (!insert(&h_queue, curr->right))
-                                return (NULL);
-                }
-                else if (!new)
-                {
-                        new = binary_tree_node(curr, value);
-                        curr->right = new;
-                        if (!new)
-                                return (NULL);
-                }
-                pop(&h_queue);
-        }
-        return (new);
+	if (!insert(&h_queue, *root))
+		return (NULL);
+	while (h_queue)
+	{
+		curr = h_queue->node;
+		if (curr->left)
+		{
+			if (!insert(&h_queue, curr->left))
+				return (NULL);
+		}
+		else if (!new)
+		{
+			new = binary_tree_node(curr, value);
+			curr->left = new;
+			if (!new)
+				return (NULL);
+		}
+		if (curr->right)
+		{
+			if (!insert(&h_queue, curr->right))
+				return (NULL);
+		}
+		else if (!new)
+		{
+			new = binary_tree_node(curr, value);
+			curr->right = new;
+			if (!new)
+				return (NULL);
+		}
+		pop(&h_queue);
+	}
+	return (new);
 }
 
 /**
@@ -96,21 +96,21 @@ heap_t *traversal(heap_t **root, int value)
  */
 heap_t *swap(heap_t *new)
 {
-        heap_t *ptr = new;
-        int tmp;
+	heap_t *ptr = new;
+	int tmp;
 
-        while (ptr->parent)
-        {
-                if (ptr->n > ptr->parent->n)
-                {
-                        tmp = ptr->n;
-                        ptr->n = ptr->parent->n;
-                        ptr->parent->n = tmp;
-                        new = new->parent;
-                }
-                ptr = ptr->parent;
-        }
-        return (new);
+	while (ptr->parent)
+	{
+		if (ptr->n > ptr->parent->n)
+		{
+			tmp = ptr->n;
+			ptr->n = ptr->parent->n;
+			ptr->parent->n = tmp;
+			new = new->parent;
+		}
+		ptr = ptr->parent;
+	}
+	return (new);
 }
 
 /**
@@ -122,15 +122,15 @@ heap_t *swap(heap_t *new)
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
-        heap_t *new;
+	heap_t *new;
 
-        if (!root)
-                return (NULL);
-        if (!*root)
-        {
-                *root = binary_tree_node(*root, value);
-                return (*root);
-        }
-        new = traversal(root, value);
-        return (swap(new));
+	if (!root)
+		return (NULL);
+	if (!*root)
+	{
+		*root = binary_tree_node(*root, value);
+		return (*root);
+	}
+	new = traversal(root, value);
+	return (swap(new));
 }
