@@ -13,8 +13,7 @@ n = 9
 `H` => `Copy All` => `Paste` => `HH` => `Paste` => `HHH` => `Copy All` => `Paste` => `HHHHHH` => `Paste` => `HHHHHHHHH`
 
 Number of operations: `6`
-<hr>
-### Output
+# Output
 ```
 carrie@ubuntu:~/0x03-minoperations$ ./0-main.py
 Min number of operations to reach 4 characters: 4
