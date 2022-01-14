@@ -8,7 +8,7 @@
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
 	add_piles(grid1, grid2);
-	while (!stability_analyzer(grid1))
+	while (stability_analyzer(grid1) == false)
 	{
 		printf("=\n");
 		print_grid(grid1);
@@ -53,28 +53,25 @@ bool stability_analyzer(int grid1[3][3])
  */
 void stabilizer(int grid1[3][3])
 {
-	int i, j;
+	int x, y;
 
-	for (i = 0; i < 3; i++)
+	for (x = 0; x < 3; x++)
 	{
-		for (j = 0; j < 3; j++)
+		for (y = 0; y < 3; y++)
 		{
-			if (grid1[i][j] > 3)
-			{
-				if (j > 0)
-					grid1[i][j - 1] += 1;
-				if (j < 2)
-					grid1[i][j + 1] += 1;
-				if (i > 0)
-					grid1[i - 1][j] += 1;
-				if (i < 2)
-					grid1[i + 1][j] += 1;
-				grid1[i][j] -= 4;
-			}
+			if (grid1[x][y] > 3)
+				grid1[x][y] -= 4;
+			if ((x > 0) && (grid1[x - 1][y] > 3))
+				grid1[x][y] += 1;
+			if ((x < 2) && (grid1[x + 1][y] > 3))
+				grid1[x][y] += 1;
+			if ((y > 0) && (grid1[x][y - 1] > 3))
+				grid1[x][y] += 1;
+			if ((y < 2) && (grid1[x][y + 1] > 3))
+				grid1[x][y] += 1;
 		}
 	}
 }
-
 /**
  * print_grid - funtion that print a 2D array
  * @grid: array to print
