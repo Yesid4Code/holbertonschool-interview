@@ -53,24 +53,31 @@ bool stability_analyzer(int grid1[3][3])
  */
 void stabilizer(int grid1[3][3])
 {
-	int x, y;
+	int i, j;
 
-	for (x = 0; x < 3; x++)
+	int sand_grid1[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+
+	for (i = 0; i < 3; i++)
 	{
-		for (y = 0; y < 3; y++)
+		for (j = 0; j < 3; j++)
 		{
-			if (grid1[x][y] > 3)
-				grid1[x][y] -= 4;
-			if ((x > 0) && (grid1[x - 1][y] > 3))
-				grid1[x][y] += 1;
-			if ((x < 2) && (grid1[x + 1][y] > 3))
-				grid1[x][y] += 1;
-			if ((y > 0) && (grid1[x][y - 1] > 3))
-				grid1[x][y] += 1;
-			if ((y < 2) && (grid1[x][y + 1] > 3))
-				grid1[x][y] += 1;
+			if (grid1[i][j] > 3)
+			{
+				grid1[i][j] -= 4;
+				if (i >= 0 && i < 2)
+					sand_grid1[i + 1][j] += 1;
+				if (i > 0 && i <= 2)
+					sand_grid1[i - 1][j] += 1;
+				if (j >= 0 && j < 2)
+					sand_grid1[i][j + 1] += 1;
+				if (j > 0 && j <= 2)
+					sand_grid1[i][j - 1] += 1;
+			}
 		}
 	}
+	for (i = 0; i < 3; i++)
+		for (j = 0; j < 3; j++)
+			grid1[i][j] += sand_grid1[i][j];
 }
 /**
  * print_grid - funtion that print a 2D array
