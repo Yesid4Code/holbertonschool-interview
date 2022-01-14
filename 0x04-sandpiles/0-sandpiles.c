@@ -15,6 +15,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 		stabilizer(grid1);
 	}
 }
+
 /**
  * add_piles - function that sum two sandpiles.
  *
@@ -79,6 +80,7 @@ void stabilizer(int grid1[3][3])
 		for (j = 0; j < 3; j++)
 			grid1[i][j] += sand_grid1[i][j];
 }
+
 /**
  * print_grid - funtion that print a 2D array
  * @grid: array to print
