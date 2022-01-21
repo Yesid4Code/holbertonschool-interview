@@ -8,7 +8,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int i = 0, m, j;
+	int i = 0, j;
 	int number_list[50];
 	listint_t *current = *head;
 
@@ -21,9 +21,7 @@ int is_palindrome(listint_t **head)
 			i++;
 		}
 
-		m = i / 2, j = i - 1;
-
-		for (i = 0; i < m; i++, j--)
+		for (i = 0; i < j; i++, j--)
 		{
 			if (number_list[i] != number_list[j])
 				return (0);
