@@ -8,11 +8,11 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int i = 0, j;
-	int number_list[124];
+	int i = 0, m, j;
+	int number_list[2048];
 	listint_t *current = *head;
 
-	if (head || (*head) )
+	if (head || (*head))
 	{
 		while (current)
 		{	/* getting the data of each node. */
@@ -21,7 +21,9 @@ int is_palindrome(listint_t **head)
 			i++;
 		}
 
-		for (i = 0; i < j; i++, j--)
+		m = i / 2, j = i - 1;
+
+		for (i = 0; i < m; i++, j--)
 		{
 			if (number_list[i] != number_list[j])
 				return (0);
