@@ -12,22 +12,23 @@ int is_palindrome(listint_t **head)
 	int number_list[50];
 	listint_t *current = *head;
 
-	if (!*head || !(*head)->next)
-		return (1);
-	while (current)
+	if (head || (*head) )
 	{
-		number_list[i] = current->n;
-		current = current->next;
-		i++;
-	}
+		while (current)
+		{	/* getting the data of each node. */
+			number_list[i] = current->n;
+			current = current->next;
+			i++;
+		}
 
-	m = i / 2, j = i - 1;
+		m = i / 2, j = i - 1;
 
-	for (i = 0; i < m; i++, j--)
-	{
-		printf("%d . %d\n", number_list[i], number_list[j]);
-		if (number_list[i] != number_list[j])
-			return (0);
+		for (i = 0; i < m; i++, j--)
+		{
+			printf("%d . %d\n", number_list[i], number_list[j]);
+			if (number_list[i] != number_list[j])
+				return (0);
+		}
 	}
 	return (1);
 }
