@@ -25,7 +25,6 @@ int is_palindrome(listint_t **head)
 
 		for (i = 0; i < m; i++, j--)
 		{
-			printf("%d . %d\n", number_list[i], number_list[j]);
 			if (number_list[i] != number_list[j])
 				return (0);
 		}
