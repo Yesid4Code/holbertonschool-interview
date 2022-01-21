@@ -13,12 +13,13 @@ heap_t *heap_insert(heap_t **root, int value)
 	node = binary_tree_node(*root, value);
 	if (!root || !node)
 		return NULL;
-	if (!root || !(*root))
+	if (!*root)
 	{
 		*root = node;
 		return (*root);
 	}
 
+	node = 
 	position = node_position /* parent node */
 	node_address = insert_node(root, node); /* as a leaf node */
 	final_address = /* new location of the new node */ /* swap function*/
@@ -35,7 +36,7 @@ i parent = (i - 2)/ 2 ??
 */
 /**
  * insert_node - find the parent of the new node.
- * 
+ *
  */
 heap_t *insert_node(heap_t **root, heap_t *node)
 {
