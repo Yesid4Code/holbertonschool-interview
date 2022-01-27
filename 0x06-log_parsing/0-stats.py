@@ -22,7 +22,7 @@ def parser(log, counter, file_size, status):
 
 
 def _print(file_size, status):
-    print("File size: {}".format(file_size))
+    print("File size: {}".format(file_size[0]))
     for stat in sorted(status.keys()):
         if status[stat] != 0:
             print("{}: {}".format(stat, status[stat]))
